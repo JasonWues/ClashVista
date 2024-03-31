@@ -1,0 +1,68 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:vm="using:Clash_Vista.ViewModels"
+             xmlns:conv="using:Clash_Vista.Converters"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
+             x:Class="Clash_Vista.Views.SubscriptionView"
+             x:DataType="vm:SubscriptionViewModel">
+	
+	<UserControl.Resources>
+		<conv:BytesToGigabytesConverter x:Key="BytesToGigabytesConverter"/>
+		<conv:TimestampToDateTimeConverter x:Key="TimestampToDateTimeConverter"/>
+	</UserControl.Resources>
+	
+	<Grid RowDefinitions="100,50,*" ColumnDefinitions="*,Auto,Auto">
+		
+		<TextBox Grid.Row="1" Name="SubscriptionLink" Watermark="SubscriptionLink" Text="{Binding SubscriptionLink}"/>
+		<Button Classes="Flat" Grid.Row="1" Grid.Column="1" Content="Import" Height="40" Margin="0,0,5,0" Command="{Binding FetchSubscriptionLinkCommand}"/>
+		<Button Classes="Flat" Grid.Row="1" Grid.Column="2" Content="New" Height="40" Margin="0,0,5,0"/>
+		
+		<ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding ProfileItems}">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<suki:GlassCard MaxWidth="400">
+						<suki:GlassCard.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Edit Info"/>
+								<MenuItem Header="Edit File"/>
+								<MenuItem Header="Open File"/>
+								<MenuItem Header="Open Web Site"/>
+								<MenuItem Header="Update"/>
+								<MenuItem Header="Update with Proxy"/>
+								<MenuItem Header="Delete" Foreground="Red"/>
+							</ContextMenu>
+						</suki:GlassCard.ContextMenu>
+						<Grid RowDefinitions="*,*,*">
+							<Label Content="{Binding Name}" FontWeight="Bold" FontSize="20"/>
+							<Label Grid.Row="1" Content="{Binding Url}" FontSize="14"/>
+							<StackPanel Grid.Row="2">
+								<DockPanel LastChildFill="False">
+									<Label DockPanel.Dock="Left">
+										<Label.Content>
+											<MultiBinding StringFormat="{}{0}GB / {1}GB">
+												<Binding Path="Extra.Download" Converter="{StaticResource BytesToGigabytesConverter}"></Binding>
+												<Binding Path="Extra.Total" Converter="{StaticResource BytesToGigabytesConverter}"></Binding>
+											</MultiBinding>
+										</Label.Content>
+									</Label>
+									<Label DockPanel.Dock="Right" Content="{Binding Extra.Expire,Converter={StaticResource TimestampToDateTimeConverter}}"/>
+								</DockPanel>
+								<ProgressBar Value="{Binding Extra.Download,Converter={StaticResource BytesToGigabytesConverter}}" 
+								             Maximum="{Binding Extra.Total,Converter={StaticResource BytesToGigabytesConverter}}"/>
+							</StackPanel>
+						</Grid>
+					</suki:GlassCard>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+	</Grid>
+</UserControl>
