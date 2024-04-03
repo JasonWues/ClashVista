@@ -24,6 +24,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="SukiUI" Version="6.0.0-beta4" />
+    <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0"/>
     <PackageReference Include="YamlDotNet" Version="15.1.2" />
   </ItemGroup>
 </Project>

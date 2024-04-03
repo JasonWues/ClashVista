@@ -6,7 +6,7 @@
 		xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
         xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
 		xmlns:views="using:Clash_Vista.Views"
-		mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="650"
         x:Class="Clash_Vista.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -27,7 +27,7 @@
 				</suki:SukiSideMenuItem.Icon>
 				
 				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Proxy Page"></TextBlock>
+					<TextBlock Margin="20" Text="Proxy Page" />
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
@@ -47,7 +47,7 @@
 				</suki:SukiSideMenuItem.Icon>
 				
 				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Connect Page"></TextBlock>
+					<TextBlock Margin="20" Text="Connect Page" />
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
@@ -57,7 +57,7 @@
 				</suki:SukiSideMenuItem.Icon>
 				
 				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Rule Page"></TextBlock>
+					<TextBlock Margin="20" Text="Rule Page" />
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
@@ -67,7 +67,7 @@
 				</suki:SukiSideMenuItem.Icon>
 				
 				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Log Page"></TextBlock>
+					<TextBlock Margin="20" Text="Log Page" />
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
@@ -77,9 +77,34 @@
 				</suki:SukiSideMenuItem.Icon>
 				
 				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Setting Page"></TextBlock>
+					<TextBlock Margin="20" Text="Setting Page" />
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 		</suki:SukiSideMenu.Items>
+		<suki:SukiSideMenu.FooterContent>
+			<Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto,Auto">
+
+				<Grid.Styles>
+					<Style Selector="materialIcons|MaterialIcon">
+						<Setter Property="Margin" Value="10,0,0,0" />
+					</Style>
+				</Grid.Styles>
+				<materialIcons:MaterialIcon Kind="ArrowUp" />
+				<TextBlock Grid.Row="0" Grid.Column="1" Text="0" FontSize="16" FontWeight="Bold" Foreground="Orange"
+				           HorizontalAlignment="Center" />
+				<TextBlock Grid.Row="0" Grid.Column="2" Text="B/s" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0" />
+
+
+				<materialIcons:MaterialIcon Grid.Row="1" Grid.Column="0" Kind="ArrowDown" />
+				<TextBlock Grid.Row="1" Grid.Column="1" Text="0" FontSize="16" FontWeight="Bold" Foreground="Blue"
+				           HorizontalAlignment="Center" />
+				<TextBlock Grid.Row="1" Grid.Column="2" Text="B/s" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0" />
+
+
+				<materialIcons:MaterialIcon Grid.Row="2" Grid.Column="0" Kind="Memory" />
+				<TextBlock Grid.Row="2" Grid.Column="1" Text="32.8" FontSize="16" HorizontalAlignment="Center" />
+				<TextBlock Grid.Row="2" Grid.Column="2" Text="MB" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0" />
+			</Grid>
+		</suki:SukiSideMenu.FooterContent>
 	</suki:SukiSideMenu>
 </suki:SukiWindow>

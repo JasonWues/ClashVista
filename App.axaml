@@ -7,12 +7,33 @@
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.DataTemplates>
-        <local:ViewLocator/>
-    </Application.DataTemplates>
-  
-    <Application.Styles>
-		<sukiUi:SukiTheme ThemeColor="Blue"/>
-		<materialIcons:MaterialIconStyles></materialIcons:MaterialIconStyles>
-	</Application.Styles>
+             <Application.DataTemplates>
+	             <local:ViewLocator />
+             </Application.DataTemplates>
+
+             <Application.Styles>
+	             <sukiUi:SukiTheme ThemeColor="Blue" />
+	             <materialIcons:MaterialIconStyles />
+             </Application.Styles>
+
+             <TrayIcon.Icons>
+	             <TrayIcons>
+		             <TrayIcon Icon="/Assets/avalonia-logo.ico"
+		                       ToolTipText="Clash Vista">
+			             <TrayIcon.Menu>
+				             <NativeMenu>
+					             <NativeMenuItem Header="Open Folder">
+						             <NativeMenu>
+							             <NativeMenuItem Header="Option 1" />
+							             <NativeMenuItem Header="Option 2" />
+							             <NativeMenuItemSeparator />
+							             <NativeMenuItem Header="Option 3" />
+						             </NativeMenu>
+					             </NativeMenuItem>
+				             </NativeMenu>
+			             </TrayIcon.Menu>
+		             </TrayIcon>
+	             </TrayIcons>
+             </TrayIcon.Icons>
+
 </Application>

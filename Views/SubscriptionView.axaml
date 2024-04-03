@@ -41,19 +41,20 @@
 							</ContextMenu>
 						</suki:GlassCard.ContextMenu>
 						<Grid RowDefinitions="*,*,*">
-							<Label Content="{Binding Name}" FontWeight="Bold" FontSize="20"/>
-							<Label Grid.Row="1" Content="{Binding Url}" FontSize="14"/>
+							<TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="20" />
+							<TextBlock Grid.Row="1" Text="{Binding Url}" FontSize="14" />
 							<StackPanel Grid.Row="2">
 								<DockPanel LastChildFill="False">
-									<Label DockPanel.Dock="Left">
-										<Label.Content>
+									<TextBlock DockPanel.Dock="Left">
+										<TextBlock.Text>
 											<MultiBinding StringFormat="{}{0}GB / {1}GB">
-												<Binding Path="Extra.Download" Converter="{StaticResource BytesToGigabytesConverter}"></Binding>
-												<Binding Path="Extra.Total" Converter="{StaticResource BytesToGigabytesConverter}"></Binding>
+												<Binding Path="Extra.Download" Converter="{StaticResource BytesToGigabytesConverter}" />
+												<Binding Path="Extra.Total" Converter="{StaticResource BytesToGigabytesConverter}" />
 											</MultiBinding>
-										</Label.Content>
-									</Label>
-									<Label DockPanel.Dock="Right" Content="{Binding Extra.Expire,Converter={StaticResource TimestampToDateTimeConverter}}"/>
+										</TextBlock.Text>
+									</TextBlock>
+									<TextBlock DockPanel.Dock="Right"
+									           Text="{Binding Extra.Expire,Converter={StaticResource TimestampToDateTimeConverter}}" />
 								</DockPanel>
 								<ProgressBar Value="{Binding Extra.Download,Converter={StaticResource BytesToGigabytesConverter}}" 
 								             Maximum="{Binding Extra.Total,Converter={StaticResource BytesToGigabytesConverter}}"/>
