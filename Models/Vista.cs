@@ -6,19 +6,21 @@ namespace Clash_Vista.Models;
 public class Vista
 {
 
-    public LogLevel LogLevel { get; set; }
+    public LogLevel LogLevel { get; set; } = LogLevel.Info;
 
-    public ThemeMode ThemeMode { get; set; }
+    public ThemeMode ThemeMode { get; set; } = ThemeMode.System;
 
-    public bool EnableAutoLaunch { get; set; }
+    public bool EnableAutoLaunch { get; set; } = false;
 
-    public bool EnableSilentStart { get; set; }
+    public bool EnableSilentStart { get; set; } = false;
 
-    public bool EnableSystemProxy { get; set; }
+    public bool EnableSystemProxy { get; set; } = false;
 
-    public short VistaMixedPort { get; set; }
+    public bool EnableRandomPort { get; set; } = false;
 
-    public short VistaSocksPort { get; set; }
+    public int VistaMixedPort { get; set; }
+
+    public int VistaSocksPort { get; set; }
 
 }
 

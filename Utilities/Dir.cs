@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Clash_Vista.Utilities;
 
-public static class DirUtilities
+public static class Dir
 {
     public static string GetProgramConfigPath()
     {
@@ -13,6 +13,11 @@ public static class DirUtilities
     public static string GetProgramLogPath()
     {
         return Path.Join(GetProgramConfigPath(), "log");
+    }
+
+    public static string GetClashConfigPath()
+    {
+        return Path.Join(GetProgramConfigPath(), "config.yaml");
     }
 
     public static string GetProgramProfilesPath()

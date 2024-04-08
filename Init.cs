@@ -13,20 +13,26 @@ public static class Init
     {
         InitLog();
 
-        var profilesPath = DirUtilities.GetProgramProfilesPath();
+        var profilesPath = Dir.GetProgramProfilesPath();
 
         if (!Path.Exists(profilesPath))
         {
             Directory.CreateDirectory(profilesPath);
         }
 
-        var vistaConfigPath = DirUtilities.GetVistaConfigPath();
+        var clashConfigPath = Dir.GetClashConfigPath();
+        if (!Path.Exists(clashConfigPath))
+        {
+            await YamlUtilities.SaveYaml(clashConfigPath, new ClashConfig());
+        }
+
+        var vistaConfigPath = Dir.GetVistaConfigPath();
         if (!Path.Exists(vistaConfigPath))
         {
             await YamlUtilities.SaveYaml(vistaConfigPath, new Vista());
         }
 
-        var profilesConfigPath = DirUtilities.GetProgramProfilesConfigPath();
+        var profilesConfigPath = Dir.GetProgramProfilesConfigPath();
         if (!Path.Exists(profilesConfigPath))
         {
             await YamlUtilities.SaveYaml(profilesConfigPath, new Profiles());
@@ -35,7 +41,7 @@ public static class Init
 
     private static void InitLog()
     {
-        var logDir = DirUtilities.GetProgramLogPath();
+        var logDir = Dir.GetProgramLogPath();
         if (!Path.Exists(logDir))
         {
             Directory.CreateDirectory(logDir);

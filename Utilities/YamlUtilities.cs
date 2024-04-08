@@ -6,7 +6,7 @@ namespace Clash_Vista.Utilities;
 
 public static class YamlUtilities
 {
-    readonly private static YamlContext _yamlContext = new YamlContext();
+    readonly private static YamlContext YamlContext = new YamlContext();
 
     public static async Task<T> ReadYaml<T>(string path)
     {
@@ -15,14 +15,14 @@ public static class YamlUtilities
             throw new FileNotFoundException();
         }
 
-        var deserializer = new StaticDeserializerBuilder(_yamlContext).Build();
+        var deserializer = new StaticDeserializerBuilder(YamlContext).Build();
 
         return deserializer.Deserialize<T>(await File.ReadAllTextAsync(path));
     }
 
-    public static async Task SaveYaml<T>(string path, T data)
+    public static async Task SaveYaml<T>(string path, T data) where T : class
     {
-        var serializer = new StaticSerializerBuilder(_yamlContext)
+        var serializer = new StaticSerializerBuilder(YamlContext)
             .Build();
 
         var yaml = serializer.Serialize(data, typeof(T));
