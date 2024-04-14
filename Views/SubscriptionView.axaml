@@ -16,6 +16,30 @@
 	
 	<Grid RowDefinitions="100,50,*" ColumnDefinitions="*,Auto,Auto">
 		
+		<Grid.Styles>
+			<Style Selector="ListBoxItem">
+				<Setter Property="Template">
+					<ControlTemplate>
+						<Border Name="BorderBasicStyle"
+						        Margin="0,0,0,0"
+						        Padding="8,4"
+						        CornerRadius="10">
+								<ContentPresenter Name="PART_ContentPresenter"
+								                  Margin="0,0,0,0"
+								                  Padding="{TemplateBinding Padding}"
+								                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+								                  Background="Transparent"
+								                  BorderBrush="Transparent"
+								                  BorderThickness="{TemplateBinding BorderThickness}"
+								                  Content="{TemplateBinding Content}"
+								                  ContentTemplate="{TemplateBinding ContentTemplate}"
+								                  CornerRadius="{TemplateBinding CornerRadius}" />
+						</Border>
+					</ControlTemplate>
+				</Setter>
+			</Style>
+		</Grid.Styles>
+		
 		<TextBox Grid.Row="1" Name="SubscriptionLink" Watermark="SubscriptionLink" Text="{Binding SubscriptionLink}"/>
 		<Button Classes="Flat" Grid.Row="1" Grid.Column="1" Content="Import" Height="40" Margin="0,0,5,0" Command="{Binding FetchSubscriptionLinkCommand}"/>
 		<Button Classes="Flat" Grid.Row="1" Grid.Column="2" Content="New" Height="40" Margin="0,0,5,0"/>

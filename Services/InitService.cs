@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Clash_Vista.Models;
 using Clash_Vista.Utilities;
 
-namespace Clash_Vista;
+namespace Clash_Vista.Services;
 
-public static class Init
+public class InitService
 {
-    public static async Task InitConfig()
+    public async Task InitConfig()
     {
-        InitLog();
+        InitLogDir();
 
         var profilesPath = Dir.GetProgramProfilesPath();
 
@@ -39,7 +39,7 @@ public static class Init
         }
     }
 
-    private static void InitLog()
+    private void InitLogDir()
     {
         var logDir = Dir.GetProgramLogPath();
         if (!Path.Exists(logDir))
@@ -48,7 +48,7 @@ public static class Init
         }
     }
 
-    public static void InitScheme()
+    public void InitScheme()
     {
         if (OperatingSystem.IsLinux())
         {

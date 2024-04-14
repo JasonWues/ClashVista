@@ -3,16 +3,27 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using Clash_Vista.Models;
+using Clash_Vista.Utilities;
 
-namespace Clash_Vista.Utilities;
+namespace Clash_Vista.Services;
 
-public class Resolve
+public class ResolveService
 {
+    private ConfigService _configService;
+
+    private InitService _initService;
+    public ResolveService(ConfigService configService,InitService initService)
+    {
+        _initService = initService;
+        _configService = configService;
+    }
     public async Task ResolveConfig()
     {
-        Init.InitScheme();
+        _initService.InitScheme();
 
-        var vista = await YamlUtilities.ReadYaml<Vista>(Dir.GetVistaConfigPath());
+        var ConfigService = await _configService.CreateAsync();
+
+        var vista = ConfigService.Vista;
 
         var port = vista.VistaMixedPort;
         
@@ -22,15 +33,13 @@ public class Resolve
             vista.VistaMixedPort = port;
             await YamlUtilities.SaveYaml(Dir.GetVistaConfigPath(), vista);
         }
-        
-        var clashConfig = await YamlUtilities.ReadYaml<ClashConfig>(Dir.GetClashConfigPath());
+
+        var clashConfig = ConfigService.ClashConfig;
         if (port != clashConfig.MixedPort)
         {
             clashConfig.MixedPort = port;
             await YamlUtilities.SaveYaml(Dir.GetClashConfigPath(), clashConfig);
         }
-        
-        
     }
 
     private int FindUnusedPort()

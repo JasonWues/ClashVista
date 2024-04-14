@@ -114,9 +114,10 @@ public partial class SubscriptionViewModel : ViewModelBase
         // Content-Disposition
         var filename = response.Content.Headers.ContentDisposition?.FileNameStar;
 
-        var profileItemOption = new ProfileItemOption();
-        profileItemOption.UpdateInterval =
-            updateIntervalExists ? uint.Parse(updateInterval?.First()) * 60 : null;
+        var profileItemOption = new ProfileItemOption
+        {
+            UpdateInterval = updateIntervalExists ? uint.Parse(updateInterval?.First()) * 60 : null
+        };
 
         var guid = Guid.NewGuid();
 
@@ -134,6 +135,8 @@ public partial class SubscriptionViewModel : ViewModelBase
             Updated = DateTimeOffset.Now.ToUnixTimeSeconds(),
             Option = profileItemOption
         });
+        
+        
 
 
         await SukiHost.ShowToast("Info", "Import profile success");

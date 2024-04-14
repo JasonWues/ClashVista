@@ -7,7 +7,7 @@ namespace Clash_Vista.Models;
 [YamlSerializable]
 public class Profiles
 {
-    public Guid? Current { get; set; } = null;
+    public string? Current { get; set; } = null;
 
     public List<string>? Chain { get; set; } = null;
 
