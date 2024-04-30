@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:vm="using:Clash_Vista.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Clash_Vista.Views.RuleView"
+             x:DataType="vm:RuleViewModel">
+    
+    <Grid RowDefinitions="50,*">
+        <Grid.Styles>
+            <Style Selector="ListBox ListBoxItem">
+                <Setter Property="IsHitTestVisible" Value="False" />
+                <Setter Property="Focusable" Value="False" />
+            </Style>
+        </Grid.Styles>
+        <TextBox Watermark="Filter Conditions"></TextBox>
+        <ListBox Grid.Row="1" ItemsSource="{Binding RuleItems}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Index}"/>
+                            <TextBlock Text="{Binding Argument}"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Type}"/>
+                            <TextBlock Text="{Binding Policy}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

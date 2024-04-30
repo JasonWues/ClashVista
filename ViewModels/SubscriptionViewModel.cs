@@ -128,16 +128,13 @@ public partial class SubscriptionViewModel : ViewModelBase
             Type = ProfileItemType.Remote,
             Desc = default,
             Url = SubscriptionLink,
-            HomeUrl = homeUrlExists ? homeUrl?.First() : null,
+            HomeUrl = homeUrlExists ? homeUrl?.FirstOrDefault() : null,
             File = $"{guid}.yaml",
             Selected = null,
             Extra = extra,
             Updated = DateTimeOffset.Now.ToUnixTimeSeconds(),
             Option = profileItemOption
         });
-        
-        
-
 
         await SukiHost.ShowToast("Info", "Import profile success");
     }

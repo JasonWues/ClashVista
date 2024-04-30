@@ -1,0 +1,22 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:vm="using:Clash_Vista.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Clash_Vista.Views.SettingView"
+             x:DataType="vm:SettingViewModel">
+    
+    <Grid ColumnDefinitions="*,*">
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Vista" Margin="0,10,0,0" FontWeight="Bold" FontSize="18"/>
+            <DockPanel>
+                <TextBlock Text="{DynamicResource Language}" VerticalAlignment="Center"/>
+                <ComboBox SelectedItem="{Binding Languages}">
+                    <ComboBoxItem Content="中文" Tag="zh-CN"/>
+                    <ComboBoxItem Content="English" Tag="en-US"/>
+                </ComboBox>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

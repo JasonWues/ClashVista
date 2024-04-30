@@ -14,12 +14,8 @@ public class ClashConfig
     public Mode Mode { get; set; } = Mode.Rule;
     public string ExternalController { get; set; } = "127.0.0.1:9097";
     public string Secret { get; set; } = string.Empty;
-    public Tun Tun { get; set; }
+    public Tun Tun { get; set; } = new Tun();
 
-    public ClashConfig()
-    {
-        Tun = new Tun();
-    }
 }
 
 [YamlSerializable]
@@ -30,7 +26,7 @@ public class Tun
     public bool AutoRoute { get; set; } = true;
     public bool StrictRoute { get; set; } = false;
     public bool AutoDetectInterface { get; set; } = true;
-    public List<string> DnsHijack { get; set; } = new List<string>(1) { "any:53" };
+    public List<string> DnsHijack { get; set; } = ["any:53"];
     public int Mtu { get; set; } = 9000;
 }
 

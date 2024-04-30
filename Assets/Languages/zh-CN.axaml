@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="OpenDashBoard">打开面板</system:String>
+    <system:String x:Key="Language">语言</system:String>
+    <system:String x:Key="RuleMode">规则模式</system:String>
+    <system:String x:Key="GlobalMode">全局模式</system:String>
+    <system:String x:Key="DirectMode">直连模式</system:String>
+    <system:String x:Key="OpenDirectory">打开目录</system:String>
+    <system:String x:Key="AppDir">应用目录</system:String>
+    <system:String x:Key="Quit">退出</system:String>
+</ResourceDictionary>

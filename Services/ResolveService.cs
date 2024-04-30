@@ -7,21 +7,14 @@ using Clash_Vista.Utilities;
 
 namespace Clash_Vista.Services;
 
-public class ResolveService
+public class ResolveService(ConfigService configService, InitService initService)
 {
-    private ConfigService _configService;
 
-    private InitService _initService;
-    public ResolveService(ConfigService configService,InitService initService)
-    {
-        _initService = initService;
-        _configService = configService;
-    }
     public async Task ResolveConfig()
     {
-        _initService.InitScheme();
+        initService.InitScheme();
 
-        var ConfigService = await _configService.CreateAsync();
+        var ConfigService = await configService.CreateAsync();
 
         var vista = ConfigService.Vista;
 

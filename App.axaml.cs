@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,7 +50,7 @@ namespace Clash_Vista
                 var resolveService = Provider?.GetRequiredService<ResolveService>();
                 await resolveService!.ResolveConfig();
             }).Wait();
-
+            
             
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
@@ -75,6 +76,8 @@ namespace Clash_Vista
 
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<SubscriptionViewModel>();
+            services.AddSingleton<SettingViewModel>();
+            services.AddSingleton<RuleViewModel>();
             services.AddSingleton<InitService>();
             services.AddSingleton<ResolveService>();
             services.AddSingleton<ConfigService>();
@@ -86,6 +89,8 @@ namespace Clash_Vista
         {
             ViewLocator.Register<MainWindowViewModel, MainWindow>();
             ViewLocator.Register<SubscriptionViewModel, SubscriptionView>();
+            ViewLocator.Register<SettingViewModel,SettingView>();
+            ViewLocator.Register<RuleViewModel,RuleView>();
         }
     }
 }

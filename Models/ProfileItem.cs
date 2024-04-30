@@ -16,7 +16,7 @@ public class ProfileItem
 
     public ProfileItemSelected Selected { get; set; }
 
-    public string HomeUrl { get; set; }
+    public string? HomeUrl { get; set; }
 
     public long Updated { get; set; }
 
