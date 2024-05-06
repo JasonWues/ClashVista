@@ -12,9 +12,7 @@
             <TextBlock Text="Vista" Margin="0,10,0,0" FontWeight="Bold" FontSize="18"/>
             <DockPanel>
                 <TextBlock Text="{DynamicResource Language}" VerticalAlignment="Center"/>
-                <ComboBox SelectedItem="{Binding Languages}">
-                    <ComboBoxItem Content="中文" Tag="zh-CN"/>
-                    <ComboBoxItem Content="English" Tag="en-US"/>
+                <ComboBox ItemsSource="{Binding SupportedLanguages}" DisplayMemberBinding="{Binding Key}" SelectedValueBinding="{Binding Value}" SelectedItem="{Binding Language}">
                 </ComboBox>
             </DockPanel>
         </StackPanel>
