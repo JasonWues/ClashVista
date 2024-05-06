@@ -5,7 +5,8 @@ namespace Clash_Vista.Models;
 [YamlSerializable]
 public class Vista
 {
-
+    public string Language { get; set; } = "en-US";
+    
     public LogLevel LogLevel { get; set; } = LogLevel.Info;
 
     public ThemeMode ThemeMode { get; set; } = ThemeMode.System;

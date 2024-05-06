@@ -20,18 +20,20 @@ public class ResolveService(ConfigService configService, InitService initService
 
         var port = vista.VistaMixedPort;
         
+        BaseUtilities.ChangeLanguage(vista.Language);
+        
         if (vista.EnableRandomPort)
         {
             port = FindUnusedPort();
             vista.VistaMixedPort = port;
-            await YamlUtilities.SaveYaml(Dir.GetVistaConfigPath(), vista);
+            await YamlUtilities.SaveYamlAsync(Dir.GetVistaConfigPath(), vista);
         }
 
         var clashConfig = ConfigService.ClashConfig;
         if (port != clashConfig.MixedPort)
         {
             clashConfig.MixedPort = port;
-            await YamlUtilities.SaveYaml(Dir.GetClashConfigPath(), clashConfig);
+            await YamlUtilities.SaveYamlAsync(Dir.GetClashConfigPath(), clashConfig);
         }
     }
 

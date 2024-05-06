@@ -10,4 +10,10 @@
     <system:String x:Key="OpenDirectory">打开目录</system:String>
     <system:String x:Key="AppDir">应用目录</system:String>
     <system:String x:Key="Quit">退出</system:String>
+    <system:String x:Key="Proxy">代理</system:String>
+    <system:String x:Key="Subscription">订阅</system:String>
+    <system:String x:Key="Connect">连接</system:String>
+    <system:String x:Key="Rule">规则</system:String>
+    <system:String x:Key="Log">日志</system:String>
+    <system:String x:Key="Setting">设置</system:String>
 </ResourceDictionary>

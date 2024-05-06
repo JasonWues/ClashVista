@@ -18,7 +18,7 @@ namespace Clash_Vista.Views
             _currentProcess = Process.GetCurrentProcess();
             GetUsedMemory();
         }
-        
+
         public void GetUsedMemory()
         {
             _timer= new DispatcherTimer()

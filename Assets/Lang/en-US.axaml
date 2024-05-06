@@ -10,4 +10,10 @@
     <system:String x:Key="OpenDirectory">Open Directory</system:String>
     <system:String x:Key="AppDir">App Dir</system:String>
     <system:String x:Key="Quit">Quit</system:String>
+    <system:String x:Key="Proxy">Proxy</system:String>
+    <system:String x:Key="Subscription">Subscription</system:String>
+    <system:String x:Key="Connect">Connect</system:String>
+    <system:String x:Key="Rule">Rule</system:String>
+    <system:String x:Key="Log">Log</system:String>
+    <system:String x:Key="Setting">Setting</system:String>
 </ResourceDictionary>

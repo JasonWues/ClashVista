@@ -21,7 +21,7 @@
 			       Source="../Assets/OIG.N5o-removebg-preview.png"/>
 		</suki:SukiSideMenu.HeaderContent>
 		<suki:SukiSideMenu.Items>
-			<suki:SukiSideMenuItem Header="Proxy">
+			<suki:SukiSideMenuItem Header="{DynamicResource Proxy}">
 				<suki:SukiSideMenuItem.Icon>
 					<materialIcons:MaterialIconExt Kind="Wifi"/>
 				</suki:SukiSideMenuItem.Icon>
@@ -31,7 +31,7 @@
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
-			<suki:SukiSideMenuItem Header="Subscription">
+			<suki:SukiSideMenuItem Header="{DynamicResource Subscription}">
 				<suki:SukiSideMenuItem.Icon>
 					<materialIcons:MaterialIconExt Kind="Server"/>
 				</suki:SukiSideMenuItem.Icon>
@@ -41,7 +41,7 @@
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
-			<suki:SukiSideMenuItem Header="Connect">
+			<suki:SukiSideMenuItem Header="{DynamicResource Connect}">
 				<suki:SukiSideMenuItem.Icon>
 					<materialIcons:MaterialIconExt Kind="Web"/>
 				</suki:SukiSideMenuItem.Icon>
@@ -51,7 +51,7 @@
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
-			<suki:SukiSideMenuItem Header="Rule">
+			<suki:SukiSideMenuItem Header="{DynamicResource Rule}">
 				<suki:SukiSideMenuItem.Icon>
 					<materialIcons:MaterialIconExt Kind="Web"/>
 				</suki:SukiSideMenuItem.Icon>
@@ -61,7 +61,7 @@
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
-			<suki:SukiSideMenuItem Header="Log">
+			<suki:SukiSideMenuItem Header="{DynamicResource Log}">
 				<suki:SukiSideMenuItem.Icon>
 					<materialIcons:MaterialIconExt Kind="TextLong"/>
 				</suki:SukiSideMenuItem.Icon>
@@ -71,7 +71,7 @@
 				</suki:SukiSideMenuItem.PageContent>
 			</suki:SukiSideMenuItem>
 			
-			<suki:SukiSideMenuItem Header="Setting">
+			<suki:SukiSideMenuItem Header="{DynamicResource Setting}">
 				<suki:SukiSideMenuItem.Icon>
 					<materialIcons:MaterialIconExt Kind="Settings"/>
 				</suki:SukiSideMenuItem.Icon>

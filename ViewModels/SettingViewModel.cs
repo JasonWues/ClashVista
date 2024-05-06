@@ -1,42 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using Avalonia;
 using Avalonia.Markup.Xaml.Styling;
+using Clash_Vista.Services;
+using Clash_Vista.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Clash_Vista.ViewModels;
 
 public partial class SettingViewModel : ViewModelBase
 {
+    
+    readonly private ConfigService _configService;
+    /// <inheritdoc/>
+    public SettingViewModel(ConfigService configService)
+    {
+        _configService = configService;
+        
+        language = new KeyValuePair<string, string>(_configService.Vista.Language,supportedLanguages[_configService.Vista.Language]);
+    }
+    
     [ObservableProperty]
     private Dictionary<string, string> supportedLanguages = new Dictionary<string, string>
     {
-        {"中文","zh-CN"},
-        {"English","en-US"}
+        {"zh-CN","中文"},
+        {"en-US","English"}
     };
     
     [ObservableProperty]
     private KeyValuePair<string,string> language;
-    
+
     partial void OnLanguageChanged(KeyValuePair<string,string> value)
     {
-        ChangeLanguage(value.Value);
+        _configService.Vista.Language = value.Key;
+        BaseUtilities.ChangeLanguage(value.Key);
     }
 
-    public void ChangeLanguage(string lang)
+    protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
-        var translations = Application.Current?.Resources.MergedDictionaries.OfType<ResourceInclude>().FirstOrDefault(x => x.Source?.OriginalString?.Contains("/Lang/") ?? false);
-
-        if (translations != null)
-            Application.Current?.Resources.MergedDictionaries.Remove(translations);
-
-        var assemblyName  = Assembly.GetExecutingAssembly().GetName().Name;
-        Application.Current?.Resources.MergedDictionaries.Add(
-            new ResourceInclude(new Uri($"avares://{assemblyName}/Assets/Lang/{lang}.axaml"))
-            {
-                Source = new Uri($"avares://{assemblyName}/Assets/Lang/{lang}.axaml")
-            });
+        base.OnPropertyChanged(e);
+        _configService.SaveVista();
     }
+
 }

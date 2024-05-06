@@ -23,19 +23,19 @@ public class InitService
         var clashConfigPath = Dir.GetClashConfigPath();
         if (!Path.Exists(clashConfigPath))
         {
-            await YamlUtilities.SaveYaml(clashConfigPath, new ClashConfig());
+            await YamlUtilities.SaveYamlAsync(clashConfigPath, new ClashConfig());
         }
 
         var vistaConfigPath = Dir.GetVistaConfigPath();
         if (!Path.Exists(vistaConfigPath))
         {
-            await YamlUtilities.SaveYaml(vistaConfigPath, new Vista());
+            await YamlUtilities.SaveYamlAsync(vistaConfigPath, new Vista());
         }
 
         var profilesConfigPath = Dir.GetProgramProfilesConfigPath();
         if (!Path.Exists(profilesConfigPath))
         {
-            await YamlUtilities.SaveYaml(profilesConfigPath, new Profiles());
+            await YamlUtilities.SaveYamlAsync(profilesConfigPath, new Profiles());
         }
     }
 
