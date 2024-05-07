@@ -15,7 +15,6 @@ public class ClashConfig
     public string ExternalController { get; set; } = "127.0.0.1:9097";
     public string Secret { get; set; } = string.Empty;
     public Tun Tun { get; set; } = new Tun();
-
 }
 
 [YamlSerializable]

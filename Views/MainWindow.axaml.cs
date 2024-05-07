@@ -4,43 +4,42 @@ using Avalonia.Controls;
 using Avalonia.Threading;
 using SukiUI.Controls;
 
-namespace Clash_Vista.Views
+namespace Clash_Vista.Views;
+
+public partial class MainWindow : SukiWindow
 {
-    public partial class MainWindow : SukiWindow
+    readonly private Process _currentProcess;
+
+    private DispatcherTimer _timer;
+
+    public MainWindow()
     {
-        private Process _currentProcess;
+        InitializeComponent();
+        _currentProcess = Process.GetCurrentProcess();
+        GetUsedMemory();
+    }
 
-        private DispatcherTimer _timer;
-        
-        public MainWindow()
+    public void GetUsedMemory()
+    {
+        _timer = new DispatcherTimer
         {
-            InitializeComponent();
-            _currentProcess = Process.GetCurrentProcess();
-            GetUsedMemory();
-        }
+            Interval = TimeSpan.FromSeconds(1),
+            IsEnabled = true
+        };
 
-        public void GetUsedMemory()
+        _timer.Tick += (sender, args) =>
         {
-            _timer= new DispatcherTimer()
-            {
-                Interval = TimeSpan.FromSeconds(1),
-                IsEnabled = true
-            };
+            var currentProcess = Process.GetCurrentProcess();
+            currentProcess.Refresh();
+            MemoryText.Text = (currentProcess.WorkingSet64 / 1048576).ToString("F1");
+        };
 
-            _timer.Tick += (sender, args) =>
-            {
-                var currentProcess = Process.GetCurrentProcess();
-                currentProcess.Refresh();
-                MemoryText.Text = (currentProcess.WorkingSet64 / 1048576).ToString("F1");
-            };
-            
-        }
+    }
 
-        protected override void OnClosing(WindowClosingEventArgs e)
-        {
-            _currentProcess.Dispose();
-            _timer.Stop();
-            base.OnClosing(e);
-        }
+    protected override void OnClosing(WindowClosingEventArgs e)
+    {
+        _currentProcess.Dispose();
+        _timer.Stop();
+        base.OnClosing(e);
     }
 }

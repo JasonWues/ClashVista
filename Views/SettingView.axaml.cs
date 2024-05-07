@@ -1,14 +1,11 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
+﻿using Avalonia.Controls;
 
-namespace Clash_Vista.Views
+namespace Clash_Vista.Views;
+
+public partial class SettingView : UserControl
 {
-    public partial class SettingView : UserControl
+    public SettingView()
     {
-        public SettingView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

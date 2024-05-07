@@ -15,5 +15,13 @@
     <system:String x:Key="Connect">连接</system:String>
     <system:String x:Key="Rule">规则</system:String>
     <system:String x:Key="Log">日志</system:String>
+    <system:String x:Key="SystemProxy">系统代理</system:String>
+    <system:String x:Key="AutoLaunch">开机自启</system:String>
+    <system:String x:Key="SilentStart">静默启动</system:String>
     <system:String x:Key="Setting">设置</system:String>
+    <system:String x:Key="Theme">主题</system:String>
+    <system:String x:Key="AllowLan">允许局域网连接</system:String>
+    <system:String x:Key="IPV6">IPv6</system:String>
+    <system:String x:Key="PortConfig">端口设置</system:String>
+    <system:String x:Key="Vista Version">版本</system:String>
 </ResourceDictionary>

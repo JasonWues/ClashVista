@@ -15,5 +15,13 @@
     <system:String x:Key="Connect">Connect</system:String>
     <system:String x:Key="Rule">Rule</system:String>
     <system:String x:Key="Log">Log</system:String>
+    <system:String x:Key="SystemProxy">System Proxy</system:String>
+    <system:String x:Key="AutoLaunch">Auto Launch</system:String>
+    <system:String x:Key="SilentStart">Silent Start</system:String>
     <system:String x:Key="Setting">Setting</system:String>
+    <system:String x:Key="Theme">Theme</system:String>
+    <system:String x:Key="AllowLan">Allow Lan</system:String>
+    <system:String x:Key="IPV6">IPv6</system:String>
+    <system:String x:Key="PortConfig">Port Config</system:String>
+    <system:String x:Key="Vista Version">Vista Version</system:String>
 </ResourceDictionary>

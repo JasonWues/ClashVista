@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,81 +15,80 @@ using Clash_Vista.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-namespace Clash_Vista
+namespace Clash_Vista;
+
+public class App : Application
 {
-    public partial class App : Application
+    public IServiceProvider Provider;
+
+    public override void Initialize()
     {
-        public IServiceProvider Provider;
-        
-        public override void Initialize()
-        {
-            AvaloniaXamlLoader.Load(this);
-            Provider = ConfigureServices();
-            RegisterLocator();
-            CreateLog();
-        }
+        AvaloniaXamlLoader.Load(this);
+        Provider = ConfigureServices();
+        RegisterLocator();
+        CreateLog();
+    }
 
-        public void CreateLog()
-        {
-            Log.Logger = new LoggerConfiguration()
+    public void CreateLog()
+    {
+        Log.Logger = new LoggerConfiguration()
 #if DEBUG
-                .WriteTo.Console()    
+            .WriteTo.Console()
 #endif
-                .WriteTo.File(Path.Join(Dir.GetProgramLogPath(),"log.txt"),rollingInterval: RollingInterval.Day)
-                .CreateLogger();
-        }
+            .WriteTo.File(Path.Join(Dir.GetProgramLogPath(), "log.txt"), rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+    }
 
-        public override void OnFrameworkInitializationCompleted()
+    public override void OnFrameworkInitializationCompleted()
+    {
+        Task.Run(async () =>
         {
-            Task.Run(async () =>
-            {
-                var initService = Provider?.GetRequiredService<InitService>();
-                await initService!.InitConfig();
-            
-                var resolveService = Provider?.GetRequiredService<ResolveService>();
-                await resolveService!.ResolveConfig();
-            }).Wait();
-            
-            
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                
-                BindingPlugins.DataValidators.RemoveAt(0);
-                var viewLocator = Provider?.GetRequiredService<IDataTemplate>();
-                var mainVm = Provider?.GetRequiredService<MainWindowViewModel>();
-                desktop.MainWindow = viewLocator?.Build(mainVm) as Window;
-            }
-            
+            var initService = Provider?.GetRequiredService<InitService>();
+            await initService!.InitConfig();
 
-            base.OnFrameworkInitializationCompleted();
-        }
-        
-        private static ServiceProvider ConfigureServices()
+            var resolveService = Provider?.GetRequiredService<ResolveService>();
+            await resolveService!.ResolveConfig();
+        }).Wait();
+
+
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            var services = new ServiceCollection();
-            var viewlocator = Current?.DataTemplates.First(x => x is ViewLocator);
-            if (viewlocator is not null)
-            {
-                services.AddSingleton(viewlocator);
-            }
 
-            services.AddSingleton<MainWindowViewModel>();
-            services.AddSingleton<SubscriptionViewModel>();
-            services.AddSingleton<SettingViewModel>();
-            services.AddSingleton<RuleViewModel>();
-            services.AddSingleton<InitService>();
-            services.AddSingleton<ResolveService>();
-            services.AddSingleton<ConfigService>();
-            services.AddHttpClient();
-            return services.BuildServiceProvider();
+            BindingPlugins.DataValidators.RemoveAt(0);
+            var viewLocator = Provider?.GetRequiredService<IDataTemplate>();
+            var mainVm = Provider?.GetRequiredService<MainWindowViewModel>();
+            desktop.MainWindow = viewLocator?.Build(mainVm) as Window;
         }
 
-        private static void RegisterLocator()
+
+        base.OnFrameworkInitializationCompleted();
+    }
+
+    private static ServiceProvider ConfigureServices()
+    {
+        var services = new ServiceCollection();
+        var viewlocator = Current?.DataTemplates.First(x => x is ViewLocator);
+        if (viewlocator is not null)
         {
-            ViewLocator.Register<MainWindowViewModel, MainWindow>();
-            ViewLocator.Register<SubscriptionViewModel, SubscriptionView>();
-            ViewLocator.Register<SettingViewModel,SettingView>();
-            ViewLocator.Register<RuleViewModel,RuleView>();
+            services.AddSingleton(viewlocator);
         }
+
+        services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<SubscriptionViewModel>();
+        services.AddSingleton<SettingViewModel>();
+        services.AddSingleton<RuleViewModel>();
+        services.AddSingleton<InitService>();
+        services.AddSingleton<ResolveService>();
+        services.AddSingleton<ConfigService>();
+        services.AddHttpClient();
+        return services.BuildServiceProvider();
+    }
+
+    private static void RegisterLocator()
+    {
+        ViewLocator.Register<MainWindowViewModel, MainWindow>();
+        ViewLocator.Register<SubscriptionViewModel, SubscriptionView>();
+        ViewLocator.Register<SettingViewModel, SettingView>();
+        ViewLocator.Register<RuleViewModel, RuleView>();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Clash_Vista.Models;
 using Clash_Vista.Utilities;
 
@@ -8,10 +7,10 @@ namespace Clash_Vista.Services;
 public class ConfigService
 {
     public ClashConfig ClashConfig;
-    
-    public Vista Vista;
-    
+
     public Profiles Profiles;
+
+    public Vista Vista;
 
     public async Task<ConfigService> CreateAsync()
     {

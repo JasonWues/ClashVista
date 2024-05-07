@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using YamlDotNet.Serialization;
 
 namespace Clash_Vista.Models;

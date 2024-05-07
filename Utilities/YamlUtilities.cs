@@ -19,7 +19,7 @@ public static class YamlUtilities
 
         return deserializer.Deserialize<T>(await File.ReadAllTextAsync(path));
     }
-    
+
     public static void SaveYaml<T>(string path, T data) where T : class
     {
         var serializer = new StaticSerializerBuilder(YamlContext)

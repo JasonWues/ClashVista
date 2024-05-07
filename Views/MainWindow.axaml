@@ -1,110 +1,114 @@
 <suki:SukiWindow xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:Clash_Vista.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
-        xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-		xmlns:views="using:Clash_Vista.Views"
-        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="650"
-        x:Class="Clash_Vista.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="Clash_Vista">
-	
-	
-	<suki:SukiSideMenu>
-		<suki:SukiSideMenu.HeaderContent>
-			<Image Width="80"
-			       Height="80"
-			       Margin="30,10,30,30"
-			       Source="../Assets/OIG.N5o-removebg-preview.png"/>
-		</suki:SukiSideMenu.HeaderContent>
-		<suki:SukiSideMenu.Items>
-			<suki:SukiSideMenuItem Header="{DynamicResource Proxy}">
-				<suki:SukiSideMenuItem.Icon>
-					<materialIcons:MaterialIconExt Kind="Wifi"/>
-				</suki:SukiSideMenuItem.Icon>
-				
-				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Proxy Page" />
-				</suki:SukiSideMenuItem.PageContent>
-			</suki:SukiSideMenuItem>
-			
-			<suki:SukiSideMenuItem Header="{DynamicResource Subscription}">
-				<suki:SukiSideMenuItem.Icon>
-					<materialIcons:MaterialIconExt Kind="Server"/>
-				</suki:SukiSideMenuItem.Icon>
-				
-				<suki:SukiSideMenuItem.PageContent>
-					<views:SubscriptionView DataContext="{Binding SubscriptionViewModel}"/>
-				</suki:SukiSideMenuItem.PageContent>
-			</suki:SukiSideMenuItem>
-			
-			<suki:SukiSideMenuItem Header="{DynamicResource Connect}">
-				<suki:SukiSideMenuItem.Icon>
-					<materialIcons:MaterialIconExt Kind="Web"/>
-				</suki:SukiSideMenuItem.Icon>
-				
-				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Connect Page" />
-				</suki:SukiSideMenuItem.PageContent>
-			</suki:SukiSideMenuItem>
-			
-			<suki:SukiSideMenuItem Header="{DynamicResource Rule}">
-				<suki:SukiSideMenuItem.Icon>
-					<materialIcons:MaterialIconExt Kind="Web"/>
-				</suki:SukiSideMenuItem.Icon>
-				
-				<suki:SukiSideMenuItem.PageContent>
-					<views:RuleView DataContext="{Binding RuleViewModel}"/>
-				</suki:SukiSideMenuItem.PageContent>
-			</suki:SukiSideMenuItem>
-			
-			<suki:SukiSideMenuItem Header="{DynamicResource Log}">
-				<suki:SukiSideMenuItem.Icon>
-					<materialIcons:MaterialIconExt Kind="TextLong"/>
-				</suki:SukiSideMenuItem.Icon>
-				
-				<suki:SukiSideMenuItem.PageContent>
-					<TextBlock Margin="20" Text="Log Page" />
-				</suki:SukiSideMenuItem.PageContent>
-			</suki:SukiSideMenuItem>
-			
-			<suki:SukiSideMenuItem Header="{DynamicResource Setting}">
-				<suki:SukiSideMenuItem.Icon>
-					<materialIcons:MaterialIconExt Kind="Settings"/>
-				</suki:SukiSideMenuItem.Icon>
-				
-				<suki:SukiSideMenuItem.PageContent>
-					<views:SettingView DataContext="{Binding SettingViewModel}"/>
-				</suki:SukiSideMenuItem.PageContent>
-			</suki:SukiSideMenuItem>
-		</suki:SukiSideMenu.Items>
-		<suki:SukiSideMenu.FooterContent>
-			<Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto,Auto">
-
-				<Grid.Styles>
-					<Style Selector="materialIcons|MaterialIcon">
-						<Setter Property="Margin" Value="10,0,0,0" />
-					</Style>
-				</Grid.Styles>
-				<materialIcons:MaterialIcon Kind="ArrowUp" />
-				<TextBlock Grid.Row="0" Grid.Column="1" Text="0" FontSize="16" FontWeight="Bold" Foreground="Orange"
-				           HorizontalAlignment="Center" />
-				<TextBlock Grid.Row="0" Grid.Column="2" Text="B/s" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0" />
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:vm="using:Clash_Vista.ViewModels"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+                 xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+                 xmlns:views="using:Clash_Vista.Views"
+                 mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="650"
+                 x:Class="Clash_Vista.Views.MainWindow"
+                 x:DataType="vm:MainWindowViewModel"
+                 Icon="/Assets/avalonia-logo.ico"
+                 Title="Clash_Vista">
 
 
-				<materialIcons:MaterialIcon Grid.Row="1" Grid.Column="0" Kind="ArrowDown" />
-				<TextBlock Grid.Row="1" Grid.Column="1" Text="0" FontSize="16" FontWeight="Bold" Foreground="Blue"
-				           HorizontalAlignment="Center" />
-				<TextBlock Grid.Row="1" Grid.Column="2" Text="B/s" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0" />
+    <suki:SukiSideMenu>
+        <suki:SukiSideMenu.HeaderContent>
+            <Image Width="80"
+                   Height="80"
+                   Margin="30,10,30,30"
+                   Source="../Assets/OIG.N5o-removebg-preview.png" />
+        </suki:SukiSideMenu.HeaderContent>
+        <suki:SukiSideMenu.Items>
+            <suki:SukiSideMenuItem Header="{DynamicResource Proxy}">
+                <suki:SukiSideMenuItem.Icon>
+                    <materialIcons:MaterialIconExt Kind="Wifi" />
+                </suki:SukiSideMenuItem.Icon>
+
+                <suki:SukiSideMenuItem.PageContent>
+                    <TextBlock Margin="20" Text="Proxy Page" />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+
+            <suki:SukiSideMenuItem Header="{DynamicResource Subscription}">
+                <suki:SukiSideMenuItem.Icon>
+                    <materialIcons:MaterialIconExt Kind="Server" />
+                </suki:SukiSideMenuItem.Icon>
+
+                <suki:SukiSideMenuItem.PageContent>
+                    <views:SubscriptionView DataContext="{Binding SubscriptionViewModel}" />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+
+            <suki:SukiSideMenuItem Header="{DynamicResource Connect}">
+                <suki:SukiSideMenuItem.Icon>
+                    <materialIcons:MaterialIconExt Kind="Web" />
+                </suki:SukiSideMenuItem.Icon>
+
+                <suki:SukiSideMenuItem.PageContent>
+                    <TextBlock Margin="20" Text="Connect Page" />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+
+            <suki:SukiSideMenuItem Header="{DynamicResource Rule}">
+                <suki:SukiSideMenuItem.Icon>
+                    <materialIcons:MaterialIconExt Kind="Web" />
+                </suki:SukiSideMenuItem.Icon>
+
+                <suki:SukiSideMenuItem.PageContent>
+                    <views:RuleView DataContext="{Binding RuleViewModel}" />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+
+            <suki:SukiSideMenuItem Header="{DynamicResource Log}">
+                <suki:SukiSideMenuItem.Icon>
+                    <materialIcons:MaterialIconExt Kind="TextLong" />
+                </suki:SukiSideMenuItem.Icon>
+
+                <suki:SukiSideMenuItem.PageContent>
+                    <TextBlock Margin="20" Text="Log Page" />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+
+            <suki:SukiSideMenuItem Header="{DynamicResource Setting}">
+                <suki:SukiSideMenuItem.Icon>
+                    <materialIcons:MaterialIconExt Kind="Settings" />
+                </suki:SukiSideMenuItem.Icon>
+
+                <suki:SukiSideMenuItem.PageContent>
+                    <views:SettingView DataContext="{Binding SettingViewModel}" />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+        </suki:SukiSideMenu.Items>
+        <suki:SukiSideMenu.FooterContent>
+            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto,Auto">
+
+                <Grid.Styles>
+                    <Style Selector="materialIcons|MaterialIcon">
+                        <Setter Property="Margin" Value="10,0,0,0" />
+                    </Style>
+                </Grid.Styles>
+                <materialIcons:MaterialIcon Kind="ArrowUp" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="0" FontSize="16" FontWeight="Bold" Foreground="Orange"
+                           HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="B/s" FontSize="12" VerticalAlignment="Center"
+                           Margin="0,0,10,0" />
 
 
-				<materialIcons:MaterialIcon Grid.Row="2" Grid.Column="0" Kind="Memory" />
-				<TextBlock Name="MemoryText" Grid.Row="2" Grid.Column="1" Text="Zero" FontSize="16" HorizontalAlignment="Center" />
-				<TextBlock Grid.Row="2" Grid.Column="2" Text="MB" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0" />
-			</Grid>
-		</suki:SukiSideMenu.FooterContent>
-	</suki:SukiSideMenu>
+                <materialIcons:MaterialIcon Grid.Row="1" Grid.Column="0" Kind="ArrowDown" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="0" FontSize="16" FontWeight="Bold" Foreground="Blue"
+                           HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="B/s" FontSize="12" VerticalAlignment="Center"
+                           Margin="0,0,10,0" />
+
+
+                <materialIcons:MaterialIcon Grid.Row="2" Grid.Column="0" Kind="Memory" />
+                <TextBlock Name="MemoryText" Grid.Row="2" Grid.Column="1" Text="Zero" FontSize="16"
+                           HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="2" Grid.Column="2" Text="MB" FontSize="12" VerticalAlignment="Center"
+                           Margin="0,0,10,0" />
+            </Grid>
+        </suki:SukiSideMenu.FooterContent>
+    </suki:SukiSideMenu>
 </suki:SukiWindow>

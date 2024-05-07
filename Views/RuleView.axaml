@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Clash_Vista.Views.RuleView"
              x:DataType="vm:RuleViewModel">
-    
+
     <Grid RowDefinitions="50,*">
         <Grid.Styles>
             <Style Selector="ListBox ListBoxItem">
@@ -14,24 +14,24 @@
                 <Setter Property="Focusable" Value="False" />
             </Style>
         </Grid.Styles>
-        <TextBox Watermark="Filter Conditions"></TextBox>
+        <TextBox Watermark="Filter Conditions" />
         <ListBox Grid.Row="1" ItemsSource="{Binding RuleItems}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel/>
+                    <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Index}"/>
-                            <TextBlock Text="{Binding Argument}"/>
+                            <TextBlock Text="{Binding Index}" />
+                            <TextBlock Text="{Binding Argument}" />
                         </StackPanel>
-                        
+
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Type}"/>
-                            <TextBlock Text="{Binding Policy}"/>
+                            <TextBlock Text="{Binding Type}" />
+                            <TextBlock Text="{Binding Policy}" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

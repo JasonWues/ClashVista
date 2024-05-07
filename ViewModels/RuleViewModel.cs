@@ -16,8 +16,8 @@ public class RuleItem
     public int Index { get; set; }
 
     public string Argument { get; set; }
-    
+
     public string Type { get; set; }
-    
+
     public string Policy { get; set; }
 }

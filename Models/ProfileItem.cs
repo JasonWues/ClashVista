@@ -1,5 +1,8 @@
-﻿namespace Clash_Vista.Models;
+﻿using YamlDotNet.Serialization;
 
+namespace Clash_Vista.Models;
+
+[YamlSerializable]
 public class ProfileItem
 {
     public string Uid { get; set; }
@@ -10,7 +13,7 @@ public class ProfileItem
 
     public string File { get; set; }
 
-    public string Desc { get; set; }
+    public string? Desc { get; set; }
 
     public string Url { get; set; }
 
@@ -23,15 +26,16 @@ public class ProfileItem
     public ProfileItemExtra Extra { get; set; }
 
     public ProfileItemOption Option { get; set; }
-
 }
 
+[YamlSerializable]
 public class ProfileItemSelected
 {
     public string Name { get; set; }
     public string Now { get; set; }
 }
 
+[YamlSerializable]
 public class ProfileItemOption
 {
     public string UserAgent { get; set; }
@@ -39,7 +43,8 @@ public class ProfileItemOption
     public uint? UpdateInterval { get; set; }
 }
 
-public struct ProfileItemExtra
+[YamlSerializable]
+public class ProfileItemExtra
 {
     public long Upload { get; set; }
 

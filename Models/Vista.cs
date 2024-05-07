@@ -5,8 +5,8 @@ namespace Clash_Vista.Models;
 [YamlSerializable]
 public class Vista
 {
-    public string Language { get; set; } = "en-US";
-    
+    public string Language { get; set; }
+
     public LogLevel LogLevel { get; set; } = LogLevel.Info;
 
     public ThemeMode ThemeMode { get; set; } = ThemeMode.System;
@@ -22,7 +22,6 @@ public class Vista
     public int VistaMixedPort { get; set; }
 
     public int VistaSocksPort { get; set; }
-
 }
 
 public enum ThemeMode

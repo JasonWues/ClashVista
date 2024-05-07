@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using Clash_Vista.Models;
 using Clash_Vista.Utilities;
 
 namespace Clash_Vista.Services;
@@ -18,10 +18,15 @@ public class ResolveService(ConfigService configService, InitService initService
 
         var vista = ConfigService.Vista;
 
+        if (string.IsNullOrEmpty(vista.Language))
+        {
+            vista.Language = CultureInfo.CurrentCulture.Name;
+        }
+        
         var port = vista.VistaMixedPort;
-        
+
         BaseUtilities.ChangeLanguage(vista.Language);
-        
+
         if (vista.EnableRandomPort)
         {
             port = FindUnusedPort();
@@ -41,9 +46,9 @@ public class ResolveService(ConfigService configService, InitService initService
     {
         try
         {
-            TcpListener listener = new TcpListener(IPAddress.Loopback,0);
+            var listener = new TcpListener(IPAddress.Loopback, 0);
             listener.Start();
-            int port = ((IPEndPoint)listener.LocalEndpoint).Port;
+            var port = ((IPEndPoint)listener.LocalEndpoint).Port;
             listener.Stop();
             return port;
         }
