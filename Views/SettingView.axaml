@@ -25,17 +25,17 @@
                 
                 <DockPanel>
                     <TextBlock Text="{DynamicResource SystemProxy}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                    <ToggleSwitch DockPanel.Dock="Right"/>
+                    <ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding SystemProxy}"/>
                 </DockPanel>
                 
                 <DockPanel>
                     <TextBlock Text="{DynamicResource AutoLaunch}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                    <ToggleSwitch DockPanel.Dock="Right"/>
+                    <ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding AutoLaunch}"/>
                 </DockPanel>
                 
                 <DockPanel>
                     <TextBlock Text="{DynamicResource SilentStart}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                    <ToggleSwitch DockPanel.Dock="Right"/>
+                    <ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding SilentStart}"/>
                 </DockPanel>
             </StackPanel>
             

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Reflection;
 using Clash_Vista.Services;
 using Clash_Vista.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -11,6 +14,15 @@ public partial class SettingViewModel : ViewModelBase
 {
 
     readonly private ConfigService _configService;
+
+    [ObservableProperty]
+    private bool autoLaunch;
+
+    [ObservableProperty]
+    private bool silentStart;
+
+    [ObservableProperty]
+    private bool systemProxy;
 
     [ObservableProperty]
     private KeyValuePair<string, string> language;

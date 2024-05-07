@@ -12,6 +12,7 @@ using Clash_Vista.Services;
 using Clash_Vista.Utilities;
 using Clash_Vista.ViewModels;
 using Clash_Vista.Views;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
@@ -81,6 +82,7 @@ public class App : Application
         services.AddSingleton<ResolveService>();
         services.AddSingleton<ConfigService>();
         services.AddHttpClient();
+        services.AddMapster();
         return services.BuildServiceProvider();
     }
 

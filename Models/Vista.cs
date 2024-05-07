@@ -11,13 +11,13 @@ public class Vista
 
     public ThemeMode ThemeMode { get; set; } = ThemeMode.System;
 
-    public bool EnableAutoLaunch { get; set; } = false;
+    public bool AutoLaunch { get; set; } = false;
 
-    public bool EnableSilentStart { get; set; } = false;
+    public bool SilentStart { get; set; } = false;
 
-    public bool EnableSystemProxy { get; set; } = false;
+    public bool SystemProxy { get; set; } = false;
 
-    public bool EnableRandomPort { get; set; } = false;
+    public bool RandomPort { get; set; } = false;
 
     public int VistaMixedPort { get; set; }
 

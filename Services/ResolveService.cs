@@ -27,7 +27,7 @@ public class ResolveService(ConfigService configService, InitService initService
 
         BaseUtilities.ChangeLanguage(vista.Language);
 
-        if (vista.EnableRandomPort)
+        if (vista.RandomPort)
         {
             port = FindUnusedPort();
             vista.VistaMixedPort = port;
