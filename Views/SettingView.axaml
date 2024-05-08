@@ -70,7 +70,13 @@
                 </DockPanel>
                 
                 <DockPanel>
-                    <TextBlock Text="{DynamicResource Vista Version}" VerticalAlignment="Center" />
+                    <TextBlock Text="{DynamicResource AppDir}" VerticalAlignment="Center" />
+                    <Button Content="{materialIcons:MaterialIconExt Kind=ArrowRight}" DockPanel.Dock="Right" 
+                            Width="28" Height="28" Padding="0" Margin="0" />
+                </DockPanel>
+                
+                <DockPanel>
+                    <TextBlock Text="{DynamicResource VistaVersion}" VerticalAlignment="Center" />
                     <TextBlock VerticalAlignment="Center"/>
                 </DockPanel>
             </StackPanel>

@@ -23,5 +23,5 @@
     <system:String x:Key="AllowLan">允许局域网连接</system:String>
     <system:String x:Key="IPV6">IPv6</system:String>
     <system:String x:Key="PortConfig">端口设置</system:String>
-    <system:String x:Key="Vista Version">版本</system:String>
+    <system:String x:Key="VistaVersion">版本</system:String>
 </ResourceDictionary>

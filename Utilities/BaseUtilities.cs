@@ -10,13 +10,13 @@ namespace Clash_Vista.Utilities;
 
 public static class BaseUtilities
 {
-    public static Dictionary<string, string> SupportedLanguages = new Dictionary<string, string>
+    readonly public static Dictionary<string, string> SupportedLanguages = new Dictionary<string, string>
     {
         { "zh-CN", "中文" },
         { "en-US", "English" }
     };
     
-    public static void OpenURL(string url)
+    public static void OpenUrl(string url)
     {
         if (OperatingSystem.IsWindows())
         {

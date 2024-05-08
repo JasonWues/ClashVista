@@ -23,5 +23,5 @@
     <system:String x:Key="AllowLan">Allow Lan</system:String>
     <system:String x:Key="IPV6">IPv6</system:String>
     <system:String x:Key="PortConfig">Port Config</system:String>
-    <system:String x:Key="Vista Version">Vista Version</system:String>
+    <system:String x:Key="VistaVersion">Vista Version</system:String>
 </ResourceDictionary>

@@ -1,4 +1,5 @@
-﻿using YamlDotNet.Serialization;
+﻿
+using YamlDotNet.Serialization;
 
 namespace Clash_Vista.Models;
 
