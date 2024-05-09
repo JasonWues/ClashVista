@@ -7,7 +7,7 @@ namespace Clash_Vista.Utilities;
 public static class YamlUtilities
 {
     readonly private static YamlContext YamlContext = new YamlContext();
-
+    
     public static async Task<T> ReadYamlAsync<T>(string path)
     {
         if (!Path.Exists(path))
@@ -16,7 +16,7 @@ public static class YamlUtilities
         }
 
         var deserializer = new StaticDeserializerBuilder(YamlContext).Build();
-
+        
         return deserializer.Deserialize<T>(await File.ReadAllTextAsync(path));
     }
 

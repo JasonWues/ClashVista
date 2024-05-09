@@ -6,12 +6,13 @@ namespace Clash_Vista.Services;
 
 public class ConfigService
 {
-    public ClashConfig ClashConfig;
+    public ClashConfig ClashConfig { get; set; }
 
-    public Profiles Profiles;
+    public Profiles Profiles{ get; set; }
 
-    public Vista Vista;
-
+    public Vista Vista { get; set; }
+    
+    
     public async Task<ConfigService> CreateAsync()
     {
         var service = this;

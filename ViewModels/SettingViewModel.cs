@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using Clash_Vista.Services;
 using Clash_Vista.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32.TaskScheduler;
 
 namespace Clash_Vista.ViewModels;
 
 public partial class SettingViewModel : ViewModelBase
 {
-
-    private bool _isWriteConfig;
     
     readonly private ConfigService _configService;
 
@@ -36,11 +37,9 @@ public partial class SettingViewModel : ViewModelBase
         _language = new KeyValuePair<string, string>(_configService.Vista.Language,
             _supportedLanguages[_configService.Vista.Language]);
 
-        AutoLaunch = _configService.Vista.AutoLaunch;
-        SilentStart = _configService.Vista.SilentStart;
-        SystemProxy = _configService.Vista.SystemProxy;
-
-        _isWriteConfig = true;
+        _autoLaunch = _configService.Vista.AutoLaunch;
+        _silentStart = _configService.Vista.SilentStart;
+        _systemProxy = _configService.Vista.SystemProxy;
     }
 
     partial void OnLanguageChanged(KeyValuePair<string, string> value)
@@ -52,7 +51,31 @@ public partial class SettingViewModel : ViewModelBase
 
     partial void OnAutoLaunchChanged(bool value)
     {
-        _configService.Vista.AutoLaunch = value;
+        try
+        {
+            _configService.Vista.AutoLaunch = value;
+            if (OperatingSystem.IsWindows())
+            {
+                if (!value)
+                {
+                    TaskService.Instance.RootFolder.DeleteTask("ClashVista",false);
+                    return;
+                }
+                
+                TaskService.Instance.AddTask("ClashVista", new LogonTrigger(),
+                    new ExecAction($"{Process.GetCurrentProcess().MainModule?.FileName}", "",null));
+            }
+
+            if (OperatingSystem.IsLinux())
+            {
+                
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     partial void OnSilentStartChanged(bool value)
@@ -75,9 +98,8 @@ public partial class SettingViewModel : ViewModelBase
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
         base.OnPropertyChanged(e);
-        if (_isWriteConfig)
-        {
-            _configService.SaveVista();
-        }
+
+        _configService.SaveVista();
+
     }
 }
