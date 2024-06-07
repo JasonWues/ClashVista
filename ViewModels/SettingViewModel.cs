@@ -6,7 +6,7 @@ using Clash_Vista.Services;
 using Clash_Vista.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Win32.TaskScheduler;
+using Microsoft.Win32;
 
 namespace Clash_Vista.ViewModels;
 
@@ -56,19 +56,43 @@ public partial class SettingViewModel : ViewModelBase
             _configService.Vista.AutoLaunch = value;
             if (OperatingSystem.IsWindows())
             {
+                var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+
                 if (!value)
                 {
-                    TaskService.Instance.RootFolder.DeleteTask("ClashVista",false);
+                    key?.DeleteValue("ClashVista",false);
+                    key?.Close();
                     return;
                 }
-                
-                TaskService.Instance.AddTask("ClashVista", new LogonTrigger(),
-                    new ExecAction($"{Process.GetCurrentProcess().MainModule?.FileName}", "",null));
+
+                if (key.GetValue("ClashVista") != null)
+                {
+                    key?.DeleteValue("ClashVista",false);
+                }
+                key?.SetValue("ClashVista", $"{Process.GetCurrentProcess().MainModule?.FileName}");
+                key?.Close();
             }
 
             if (OperatingSystem.IsLinux())
             {
+                var currentFilePath = Process.GetCurrentProcess().MainModule?.FileName;
+                var service = $"""
+                              [Unit]
+                              Description=ClashVista
+                              After=network.target
+
+                              [Service]
+                              User=myuser
+                              Group=mygroup
+                              WorkingDirectory=/home/myuser/myapp
+                              ExecStart={currentFilePath}
+                              Restart=on-failure
+
+                              [Install]
+                              WantedBy=multi-user.target
+                              """;
                 
+                //TODO write service
             }
         }
         catch (Exception e)

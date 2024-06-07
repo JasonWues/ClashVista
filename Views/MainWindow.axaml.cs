@@ -1,6 +1,9 @@
 using System;
 using System.Diagnostics;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Threading;
 using SukiUI.Controls;
 
@@ -8,14 +11,14 @@ namespace Clash_Vista.Views;
 
 public partial class MainWindow : SukiWindow
 {
-    readonly private Process _currentProcess;
+    readonly public Process CurrentProcess;
 
     private DispatcherTimer _timer;
 
     public MainWindow()
     {
         InitializeComponent();
-        _currentProcess = Process.GetCurrentProcess();
+        CurrentProcess = Process.GetCurrentProcess();
         GetUsedMemory();
     }
 
@@ -38,8 +41,16 @@ public partial class MainWindow : SukiWindow
 
     protected override void OnClosing(WindowClosingEventArgs e)
     {
-        _currentProcess.Dispose();
         _timer.Stop();
+        Hide();
+        e.Cancel = true;
         base.OnClosing(e);
+    }
+    
+
+    public override void Show()
+    {
+        _timer.Start();
+        base.Show();
     }
 }

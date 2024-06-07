@@ -23,7 +23,8 @@
     <TrayIcon.Icons>
         <TrayIcons>
             <TrayIcon Icon="/Assets/avalonia-logo.ico"
-                      ToolTipText="Clash Vista">
+                      ToolTipText="Clash Vista"
+                      Clicked="TrayIcon_OnClicked">
                 <TrayIcon.Menu>
                     <NativeMenu>
                         <NativeMenuItem Header="{DynamicResource OpenDashBoard}" />
@@ -38,7 +39,7 @@
                             </NativeMenu>
                         </NativeMenuItem>
                         <NativeMenuItemSeparator />
-                        <NativeMenuItem Header="{DynamicResource Quit}" />
+                        <NativeMenuItem Header="{DynamicResource Quit}" Click="NativeMenuItem_OnClick"/>
                     </NativeMenu>
                 </TrayIcon.Menu>
             </TrayIcon>
