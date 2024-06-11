@@ -5,7 +5,8 @@ namespace Clash_Vista.ViewModels;
 public partial class MainWindowViewModel(
     SubscriptionViewModel subscriptionViewModel,
     SettingViewModel settingViewModel,
-    RuleViewModel ruleViewModel)
+    RuleViewModel ruleViewModel,
+    ProxyViewModel proxyViewModel)
     : ViewModelBase
 {
 
@@ -17,4 +18,7 @@ public partial class MainWindowViewModel(
 
     [ObservableProperty]
     private SubscriptionViewModel _subscriptionViewModel = subscriptionViewModel;
+
+    [ObservableProperty]
+    private ProxyViewModel _proxyViewModel = proxyViewModel;
 }

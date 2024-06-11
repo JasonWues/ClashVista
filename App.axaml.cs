@@ -98,6 +98,7 @@ public class App : Application
         services.AddSingleton<SubscriptionViewModel>();
         services.AddSingleton<SettingViewModel>();
         services.AddSingleton<RuleViewModel>();
+        services.AddSingleton<ProxyViewModel>();
         services.AddSingleton<InitService>();
         services.AddSingleton<ResolveService>();
         services.AddSingleton<ConfigService>();
@@ -111,6 +112,7 @@ public class App : Application
         ViewLocator.Register<SubscriptionViewModel, SubscriptionView>();
         ViewLocator.Register<SettingViewModel, SettingView>();
         ViewLocator.Register<RuleViewModel, RuleView>();
+        ViewLocator.Register<ProxyViewModel,ProxyView>();
     }
     private void TrayIcon_OnClicked(object? sender, EventArgs e)
     {

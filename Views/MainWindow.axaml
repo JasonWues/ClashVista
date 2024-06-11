@@ -27,7 +27,7 @@
                 </suki:SukiSideMenuItem.Icon>
 
                 <suki:SukiSideMenuItem.PageContent>
-                    <TextBlock Margin="20" Text="Proxy Page" />
+                    <views:ProxyView DataContext="{Binding ProxyViewModel}"></views:ProxyView>
                 </suki:SukiSideMenuItem.PageContent>
             </suki:SukiSideMenuItem>
 
